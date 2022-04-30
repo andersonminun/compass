@@ -5,6 +5,10 @@ import java.time.Period;
 
 public class CalculadoraIdade {
 
+	private CalculadoraIdade() {
+		
+	}
+	
 	/**
 	 * Calcula a idade a partir da data informada
 	 */

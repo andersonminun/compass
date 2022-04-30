@@ -24,6 +24,7 @@ import io.github.anderson.api.dto.InformacaoClienteDTO;
 import io.github.anderson.model.entity.Cidade;
 import io.github.anderson.model.entity.Cliente;
 import io.github.anderson.service.ClienteService;
+import io.github.anderson.util.Constantes;
 
 @RestController
 @RequestMapping("api/clientes")
@@ -43,9 +44,7 @@ public class ClienteController {
 		Cidade cidade = new Cidade();
 		cidade.setId(dto.getCidade());
 		
-		Cliente cliente = new Cliente(dto.getNome(), dto.getSexo(), dto.getDataNascimento(), cidade);
-		
-		return cliente;
+		return new Cliente(dto.getNome(), dto.getSexo(), dto.getDataNascimento(), cidade);
 	}
 	
 	/**
@@ -82,7 +81,7 @@ public class ClienteController {
 	public InformacaoClienteDTO getPorId(@PathVariable Long id) {
 		
 		Cliente cliente = service.getPorId(id)
-				.orElseThrow( () -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Cliente não encontrado"));
+				.orElseThrow( () -> new ResponseStatusException(HttpStatus.NOT_FOUND, Constantes.ERROR_CLIENTE_NAO_ENCONTRADO));
 		
 		return converterParaInfo(cliente);
 	}
@@ -109,7 +108,7 @@ public class ClienteController {
 	public void deletar(@PathVariable Long id) {
 		
 		Cliente cliente = service.getPorId(id)
-				.orElseThrow( () -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Cliente não encontrado"));
+				.orElseThrow( () -> new ResponseStatusException(HttpStatus.NOT_FOUND, Constantes.ERROR_CLIENTE_NAO_ENCONTRADO));
 		
 		service.deletar(cliente);
 	}
@@ -121,7 +120,7 @@ public class ClienteController {
 	public InformacaoClienteDTO atualizarNome(@PathVariable Long id, @RequestBody @Valid AtualizarNomeClienteDTO dto) {
 		
 		Cliente cliente = service.getPorId(id)
-				.orElseThrow( () -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Cliente não encontrado"));
+				.orElseThrow( () -> new ResponseStatusException(HttpStatus.NOT_FOUND, Constantes.ERROR_CLIENTE_NAO_ENCONTRADO));
 		
 		cliente.setNome(dto.getNome());
 		

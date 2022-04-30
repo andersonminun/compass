@@ -4,14 +4,14 @@ import javax.validation.constraints.NotEmpty;
 
 public class AtualizarNomeClienteDTO {
 
-	@NotEmpty(message = "Campo nome é obrigatório")
+	@NotEmpty(message = "{nome.obrigatorio}")
 	private String nome;
 	
 	public AtualizarNomeClienteDTO() {
 		
 	}
 
-	public AtualizarNomeClienteDTO(@NotEmpty(message = "Campo nome é obrigatório") String nome) {
+	public AtualizarNomeClienteDTO(String nome) {
 		this.nome = nome;
 	}
 

@@ -106,7 +106,7 @@ public class ClienteServiceTest {
 		
 		Cliente cliente = criarCliente();
 		
-		when(cidadeRepository.findById(Mockito.anyLong())).thenThrow(new RegraNegocioException("Cidade não encontrada"));
+		when(cidadeRepository.findById(Mockito.anyLong())).thenReturn(Optional.empty());
 		
 		Throwable exception = Assertions.catchThrowable(() -> service.salvar(cliente));
 		

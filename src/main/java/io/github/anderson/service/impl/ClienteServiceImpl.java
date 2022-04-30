@@ -34,13 +34,13 @@ public class ClienteServiceImpl implements ClienteService {
 	public Cliente salvar(Cliente cliente) {
 		
 		if(!validarSexo(cliente.getSexo())) {
-			throw new RegraNegocioException("Valor inválido para o sexo");
+			throw new RegraNegocioException(Constantes.ERROR_SEXO_INVALIDO);
 		}
 		
 		Long idCidade = cliente.getCidade().getId();
 		
 		Cidade cidade = cidadeRepository.findById(idCidade)
-				.orElseThrow(() -> new RegraNegocioException("Cidade não encontrada"));
+				.orElseThrow(() -> new RegraNegocioException(Constantes.ERROR_CIDADE_INVALIDA));
 		
 		cliente.setCidade(cidade);
 		

@@ -6,10 +6,10 @@ public class CidadeDTO {
 
 	private Long id;
 	
-	@NotEmpty(message = "Campo nome é obrigatório")
+	@NotEmpty(message = "{nome.obrigatorio}")
 	private String nome;
 	
-	@NotEmpty(message = "Campo estado é obrigatório")
+	@NotEmpty(message = "{estado.obrigatorio}")
 	private String estado;
 	
 	public CidadeDTO() {

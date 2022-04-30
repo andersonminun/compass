@@ -10,6 +10,7 @@ import io.github.anderson.api.exception.RegraNegocioException;
 import io.github.anderson.model.entity.Cidade;
 import io.github.anderson.model.repository.CidadeRepository;
 import io.github.anderson.service.CidadeService;
+import io.github.anderson.util.Constantes;
 
 @Service
 public class CidadeServiceImpl implements CidadeService {
@@ -27,7 +28,7 @@ public class CidadeServiceImpl implements CidadeService {
 	public Cidade salvar(Cidade cidade) {
 
 		if(repository.existsByNomeAndEstado(cidade.getNome(), cidade.getEstado())) {
-			throw new RegraNegocioException("Cidade já cadastrada");
+			throw new RegraNegocioException(Constantes.ERROR_CIDADE_CADASTRADA);
 		}
 		
 		return repository.save(cidade);

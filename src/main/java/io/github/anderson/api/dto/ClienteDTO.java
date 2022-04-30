@@ -18,7 +18,7 @@ public class ClienteDTO {
 
 	private Long id;
 	
-	@NotEmpty(message = "Campo nome é obrigatório")
+	@NotEmpty(message = "{nome.obrigatorio}")
 	private String nome;
 	
 	@JsonSetter(nulls = Nulls.SKIP)
@@ -27,10 +27,10 @@ public class ClienteDTO {
 	@JsonProperty("data_nascimento")
 	@JsonFormat(pattern="dd/MM/yyyy")
 	@JsonSerialize(using = LocalDateSerializer.class)
-	@NotNull(message = "Campo data de nascimento é obrigatório")
+	@NotNull(message = "{datanascimento.obrigatorio}")
     private LocalDate dataNascimento;
 	
-	@NotNull(message = "Informe o código da cidade")
+	@NotNull(message = "{cidade.obrigatorio}")
 	private Long cidade;
 	
 	public ClienteDTO() {

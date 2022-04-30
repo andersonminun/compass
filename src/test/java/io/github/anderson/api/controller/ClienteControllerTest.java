@@ -121,8 +121,7 @@ public class ClienteControllerTest {
 		
 		String mensagem = "Cidade não encontrada";
 		
-		given(service.salvar(Mockito.any(Cliente.class)))
-			.willThrow(new RegraNegocioException(mensagem));
+		given(service.salvar(Mockito.any(Cliente.class))).willThrow(new RegraNegocioException(mensagem));
 	
 		String json = new ObjectMapper().writeValueAsString(dto);
 		
